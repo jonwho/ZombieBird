@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.kilobolt.GameWorld.GameRenderer;
 import com.kilobolt.GameWorld.GameWorld;
+import com.kilobolt.ZBHelpers.InputHandler;
 
 public class GameScreen implements Screen {
 
@@ -14,8 +15,17 @@ public class GameScreen implements Screen {
   public GameScreen() {
     System.out.println("GameScreen Attached");
     
-    world = new GameWorld();
+    float screenWidth = Gdx.graphics.getWidth();
+    float screenHeight = Gdx.graphics.getHeight();
+    float gameWidth = 136;
+    float gameHeight = screenHeight / (screenWidth / screenHeight);
+    
+    int midPointY = (int) (gameHeight / 2);
+    
+    world = new GameWorld(midPointY);
     renderer = new GameRenderer(world);
+    
+    Gdx.input.setInputProcessor(new InputHandler(world.getBird()));
   }
 
   @Override
