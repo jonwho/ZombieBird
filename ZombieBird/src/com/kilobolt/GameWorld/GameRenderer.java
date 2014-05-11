@@ -1,6 +1,7 @@
 package com.kilobolt.GameWorld;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.math.Rectangle;
 import com.kilobolt.GameObjects.Bird;
 import com.kilobolt.GameObjects.Grass;
 import com.kilobolt.GameObjects.Pipe;
@@ -149,17 +151,17 @@ public class GameRenderer {
         batcher.begin();
         batcher.disableBlending();
         batcher.draw(bg, 0, midPointY + 23, 136, 43);
-        
+
         // 1. Draw Grass
         drawGrass();
-        
+
         // 2. Draw Pipes
         drawPipes();
         batcher.enableBlending();
-        
+
         // 3. Draw Skulls (requires transparency)
         drawSkulls();
-        
+
         if (bird.shouldntFlap()) {
             batcher.draw(birdMid, bird.getX(), bird.getY(),
                     bird.getWidth() / 2.0f, bird.getHeight() / 2.0f,
