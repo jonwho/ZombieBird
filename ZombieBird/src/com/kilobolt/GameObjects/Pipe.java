@@ -16,6 +16,8 @@ public class Pipe extends Scrollable {
     public static final int SKULL_HEIGHT = 11;
     private float groundY;
 
+    private boolean isScored = false;
+
     // When Pipe's constructor is invoked, invoke the super (Scrollable)
     // constructor
     public Pipe(float x, float y, int width, int height, float scrollSpeed,
@@ -47,7 +49,7 @@ public class Pipe extends Scrollable {
         // Our skull width is 24. The bar is only 22 pixels wide. So the skull
         // must be shifted by 1 pixel to the left (so that the skull is centered
         // with respect to its bar).
-        
+
         // This shift is equivalent to: (SKULL_WIDTH - width) / 2
         skullUp.set(position.x - (SKULL_WIDTH - width) / 2, position.y + height
                 - SKULL_HEIGHT, SKULL_WIDTH, SKULL_HEIGHT);
@@ -62,6 +64,7 @@ public class Pipe extends Scrollable {
         super.reset(newX);
         // Change the height to a random number
         height = r.nextInt(90) + 15;
+        isScored = false;
     }
 
     public Rectangle getSkullUp() {
@@ -81,14 +84,20 @@ public class Pipe extends Scrollable {
     }
 
     public boolean collides(Bird bird) {
-      if (position.x < bird.getX() + bird.getWidth()) {
-          return (Intersector.overlaps(bird.getBoundingCircle(), barUp)
-                  || Intersector.overlaps(bird.getBoundingCircle(), barDown)
-                  || Intersector.overlaps(bird.getBoundingCircle(), skullUp) || Intersector
-                      .overlaps(bird.getBoundingCircle(), skullDown));
-      }
-      return false;
-  }
+        if (position.x < bird.getX() + bird.getWidth()) {
+            return (Intersector.overlaps(bird.getBoundingCircle(), barUp)
+                    || Intersector.overlaps(bird.getBoundingCircle(), barDown)
+                    || Intersector.overlaps(bird.getBoundingCircle(), skullUp) || Intersector
+                        .overlaps(bird.getBoundingCircle(), skullDown));
+        }
+        return false;
+    }
 
+    public boolean isScored() {
+        return isScored;
+    }
 
+    public void setScored(boolean b) {
+        isScored = b;
+    }
 }
