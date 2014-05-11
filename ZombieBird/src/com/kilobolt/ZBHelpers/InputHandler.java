@@ -42,14 +42,15 @@ public class InputHandler implements InputProcessor {
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		screenX = scaleX(screenX);
 		screenY = scaleY(screenY);
-		System.out.println(screenX + " " + screenY);
+
 		if (myWorld.isMenu()) {
 			playButton.isTouchDown(screenX, screenY);
 		} else if (myWorld.isReady()) {
 			myWorld.start();
+			myBird.onClick();
+		} else if (myWorld.isRunning()) {
+			myBird.onClick();
 		}
-
-		myBird.onClick();
 
 		if (myWorld.isGameOver() || myWorld.isHighScore()) {
 			myWorld.restart();
