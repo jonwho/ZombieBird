@@ -1,25 +1,21 @@
 package com.kilobolt.GameWorld;
 
-import com.badlogic.gdx.math.Rectangle;
 import com.kilobolt.GameObjects.Bird;
 
 public class GameWorld {
 
-  private Bird bird;
-  
-  public GameWorld() {
-    // TODO Auto-generated constructor stub
-  }
+	private Bird bird;
 
-  public GameWorld(int midPointY) {
-    bird = new Bird(33, midPointY - 5, 17, 12);
-  }
-  
-  public void update(float delta) {
-    bird.update(delta);  
-  }
-  
-  public Bird getBird() {
-    return bird;
-  }
+	public GameWorld(int midPointY) {
+		bird = new Bird(33, midPointY - 5, 17, 12);
+	}
+
+	public void update(float delta) {
+		bird.update(delta);
+	}
+
+	public Bird getBird() {
+		return bird;
+
+	}
 }

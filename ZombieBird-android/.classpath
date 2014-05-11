@@ -7,8 +7,6 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="lib" path="/ZombieBird/libs/gdx.jar" sourcepath="/ZombieBird/libs/gdx-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/gdx-backend-android.jar" sourcepath="libs/gdx-backend-android-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="/ZombieBird/libs/bodyeditor-loader.jar" sourcepath="/ZombieBird/libs/bodyeditor-loader-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="/ZombieBird/libs/tween-engine-api.jar" sourcepath="/ZombieBird/libs/tween-engine-api-sources.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
