@@ -2,20 +2,34 @@ package com.kilobolt.ZBHelpers;
 
 import com.badlogic.gdx.InputProcessor;
 import com.kilobolt.GameObjects.Bird;
+import com.kilobolt.GameWorld.GameWorld;
 
 public class InputHandler implements InputProcessor {
     private Bird myBird;
+    private GameWorld myWorld;
 
     // Ask for a reference to the Bird when InputHandler is created.
-    public InputHandler(Bird bird) {
+    public InputHandler(GameWorld myWorld) {
         // myBird now represents the gameWorld's bird.
-        myBird = bird;
+        this.myWorld = myWorld;
+        myBird = myWorld.getBird();
     }
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+
+        if (myWorld.isReady()) {
+            myWorld.start();
+        }
+
         myBird.onClick();
-        return true; // Return true to say we handled the touch.
+
+        if (myWorld.isGameOver()) {
+            // Reset all variables, go to GameState.READ
+            myWorld.restart();
+        }
+
+        return true;
     }
 
     @Override
